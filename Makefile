@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp model/celestial_body.cpp model/planet.cpp model/sun.cpp model/position.cpp model/time.cpp clamp_radians.cpp -o kerbin
+	g++ main.cpp models/celestial_body.cpp models/planet.cpp models/sun.cpp types/position.cpp types/time.cpp utils/clamp_radians.cpp -o kerbin

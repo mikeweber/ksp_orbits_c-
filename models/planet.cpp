@@ -2,8 +2,8 @@
 #include <string>
 #include "planet.h"
 #include "celestial_body.h"
-#include "position.h"
-#include "../tau.h"
+#include "../types/position.h"
+#include "../utils/tau.h"
 
 using namespace std;
 

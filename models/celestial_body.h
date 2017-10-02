@@ -1,6 +1,6 @@
 #include <string>
-#include "position.h"
-#include "time.h"
+#include "../types/position.h"
+#include "../types/time.h"
 
 #ifndef CelestialBody_H
 #define CelestialBody_H
@@ -37,7 +37,7 @@ class CelestialBody {
     double getArgumentOfPeriapsis();
 
   protected:
-    init(string, double, long int, double, Position*, double, double, double);
+    void init(string, double, long int, double, Position*, double, double, double);
 };
 
 #endif

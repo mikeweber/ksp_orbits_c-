@@ -1,6 +1,6 @@
 #include <string>
 #include "sun.h"
-#include "position.h"
+#include "../types/position.h"
 
 using namespace std;
 

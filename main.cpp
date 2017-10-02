@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include "model/sun.h"
-#include "model/planet.h"
-#include "tau.h"
+#include "models/sun.h"
+#include "models/planet.h"
+#include "utils/tau.h"
 
 using namespace std;
 

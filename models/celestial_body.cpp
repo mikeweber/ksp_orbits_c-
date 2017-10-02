@@ -1,9 +1,9 @@
 #include <string>
 #include <math.h>
 #include "celestial_body.h"
-#include "time.h"
-#include "../clamp_radians.h"
-#include "../tau.h"
+#include "../types/time.h"
+#include "../utils/clamp_radians.h"
+#include "../utils/tau.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ CelestialBody::CelestialBody(string body_name, double body_radius, long int body
   v = body_v;
 };
 
-CelestialBody::init(string body_name, double body_radius, long int body_mu, double semimajor_axis, Position* pos, double body_arg_of_pe, double eccentricity, double prograde) {
+void CelestialBody::init(string body_name, double body_radius, long int body_mu, double semimajor_axis, Position* pos, double body_arg_of_pe, double eccentricity, double prograde) {
   name      = body_name;
   radius    = body_radius;
   mu        = body_mu;
@@ -39,8 +39,8 @@ Position * CelestialBody::getPositionAtTime(Time t) {
 };
 
 double CelestialBody::getMeanAnomaly(Time t) {
-  getMeanAnomaly(t, getEccentricity());
-}
+  return getMeanAnomaly(t, getEccentricity());
+};
 
 double CelestialBody::getMeanAnomaly(Time t, double ecc) {
   double M;
@@ -56,13 +56,13 @@ double CelestialBody::getMeanAnomaly(Time t, double ecc) {
 };
 
 double CelestialBody::getEccentricAnomaly(double M, double ecc) {
-  getEccentricAnomaly(M, ecc, M, 1);
-}
+  return getEccentricAnomaly(M, ecc, M, 1);
+};
 
 double CelestialBody::getEccentricAnomaly(double M, double ecc, double E, int tries) {
   double F = E - ecc * sin(M) - M;
 
-  if (tries > MAX_ECCENTRIC_ANOMALY_TRIES || abs(F) < ECCENTRIC_ANOMALY_TOLERANCE) {
+  if (tries > MAX_ECCENTRIC_ANOMALY_TRIES || fabs(F) < ECCENTRIC_ANOMALY_TOLERANCE) {
     return E;
   } else {
     E -= F / (1 - ecc * cos(E));
