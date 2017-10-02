@@ -11,7 +11,7 @@ class Planet:public CelestialBody {
   public:
     long int soi;
 
-    Planet(CelestialBody*, string, double, GravitationalParameter, double, double, double, double, long int);
+    Planet(CelestialBody*, string, double, GravitationalParameter, double, Angle, Angle, double, long int);
     GravitationalParameter getParentMu();
     string getParentName();
 };

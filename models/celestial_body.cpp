@@ -27,8 +27,8 @@ Position * CelestialBody::getPositionAtTime(Time t) {
   double C   = cos(-M);
   double esq = pow(ecc, 2);
 
-  double phi = getArgumentOfPeriapsis() - atan2((1 - esq) * S, C - ecc);
-  double r   = (a * (1 - esq)) / (1 + ecc * cos(phi));
+  Angle phi = Angle(getArgumentOfPeriapsis() - atan2((1 - esq) * S, C - ecc));
+  double r      = (a * (1 - esq)) / (1 + ecc * cos(phi));
   return new Position(r, phi);
 };
 

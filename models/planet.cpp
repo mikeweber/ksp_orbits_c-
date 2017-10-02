@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Planet::Planet(CelestialBody* _parent, string body_name, double body_radius, GravitationalParameter body_mu, double semimajor_axis, double anomaly, double body_arg_of_pe, double eccentricity, long int _soi) {
+Planet::Planet(CelestialBody* _parent, string body_name, double body_radius, GravitationalParameter body_mu, double semimajor_axis, Angle anomaly, Angle body_arg_of_pe, double eccentricity, long int _soi) {
   parent = _parent;
   soi    = _soi;
 
