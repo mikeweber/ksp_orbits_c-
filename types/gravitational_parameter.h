@@ -3,12 +3,12 @@
 
 class GravitationalParameter {
   public:
-    GravitationalParameter(double);
-    operator double() {
+    GravitationalParameter(long int);
+    operator long int() {
       return mu;
     };
   private:
-    double mu;
+    long int mu;
 };
 
 #endif

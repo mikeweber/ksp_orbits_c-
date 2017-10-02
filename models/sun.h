@@ -8,7 +8,7 @@ using namespace std;
 
 class Sun:public CelestialBody {
   public:
-    Sun(string, double, long int);
+    Sun(string, double, GravitationalParameter);
 };
 
 #endif

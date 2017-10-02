@@ -1,7 +1,6 @@
 #include <string>
 #include <math.h>
 #include "celestial_body.h"
-#include "../types/time.h"
 #include "../utils/clamp_radians.h"
 #include "../utils/tau.h"
 
@@ -9,12 +8,7 @@ using namespace std;
 
 CelestialBody::CelestialBody() {};
 
-CelestialBody::CelestialBody(string body_name, double body_radius, long int body_mu, double body_v, double semimajor_axis, Position* pos, double body_arg_of_pe, double eccentricity, double prograde) {
-  init(body_name, body_radius, body_mu, semimajor_axis, pos, body_arg_of_pe, eccentricity, prograde);
-  v = body_v;
-};
-
-void CelestialBody::init(string body_name, double body_radius, long int body_mu, double semimajor_axis, Position* pos, double body_arg_of_pe, double eccentricity, double prograde) {
+void CelestialBody::init(string body_name, double body_radius, GravitationalParameter body_mu, double semimajor_axis, Position* pos, double body_arg_of_pe, double eccentricity, double prograde) {
   name      = body_name;
   radius    = body_radius;
   mu        = body_mu;
@@ -78,7 +72,7 @@ double CelestialBody::getMeanMotion() {
   return sqrt(getParentMu() / pow(a, 3));
 };
 
-long int CelestialBody::getParentMu() {
+GravitationalParameter CelestialBody::getParentMu() {
   return mu;
 };
 

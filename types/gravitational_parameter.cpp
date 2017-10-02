@@ -1,5 +1,5 @@
 #include "gravitational_parameter.h"
 
-GravitationalParameter::GravitationalParameter(double _mu) {
+GravitationalParameter::GravitationalParameter(long int _mu) {
   mu = _mu;
 };

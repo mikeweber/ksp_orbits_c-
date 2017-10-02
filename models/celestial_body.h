@@ -1,6 +1,7 @@
 #include <string>
 #include "../types/position.h"
 #include "../types/time.h"
+#include "../types/gravitational_parameter.h"
 
 #ifndef CelestialBody_H
 #define CelestialBody_H
@@ -22,7 +23,6 @@ class CelestialBody {
     double m;
 
     CelestialBody();
-    CelestialBody(string, double, long int, double, double, Position*, double, double, double);
     ~CelestialBody();
     Position * getPositionAtTime(Time);
     double getMeanAnomaly(Time);
@@ -31,13 +31,13 @@ class CelestialBody {
     double getEccentricAnomaly(double, double, double, int);
     double getInitMeanAnomaly();
     double getMeanMotion();
-    virtual long int getParentMu();
+    virtual GravitationalParameter getParentMu();
     virtual string getParentName();
     double getEccentricity();
     double getArgumentOfPeriapsis();
 
   protected:
-    void init(string, double, long int, double, Position*, double, double, double);
+    void init(string, double, GravitationalParameter, double, Position*, double, double, double);
 };
 
 #endif
