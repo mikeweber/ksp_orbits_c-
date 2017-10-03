@@ -2,6 +2,7 @@
 #include "../types/position.h"
 #include "../types/time.h"
 #include "../types/gravitational_parameter.h"
+#include "../types/coordinates.h"
 
 #ifndef CelestialBody_H
 #define CelestialBody_H
@@ -24,7 +25,9 @@ class CelestialBody {
 
     CelestialBody();
     ~CelestialBody();
-    Position * getPositionAtTime(Time);
+    virtual Coordinates getCoordinates(Time);
+    Coordinates getLocalCoordinates(Time);
+    Position getPositionAtTime(Time);
     Angle getMeanAnomaly(Time);
     Angle getMeanAnomaly(Time, double);
     Angle getEccentricAnomaly(Angle, double);

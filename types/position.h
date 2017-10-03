@@ -1,4 +1,5 @@
 #include "angle.h"
+#include <utility>
 
 #ifndef Position_H
 #define Position_H
@@ -9,6 +10,7 @@ class Position {
     Angle phi;
     Position();
     Position(double, Angle);
+    std::pair<double, double> toCoordinates();
 };
 
 #endif

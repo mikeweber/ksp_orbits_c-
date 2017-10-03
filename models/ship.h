@@ -1,8 +1,10 @@
 #include <string>
 #include "celestial_body.h"
 #include "../types/velocity.h"
-#include "../types/prograde.h"
+#include "../types/coordinates.h"
 #include "../types/heading.h"
+#include "../types/time.h"
+#include "../types/acceleration.h"
 
 #ifndef Ship_H
 #define Ship_H
@@ -10,29 +12,30 @@
 using namespace std;
 
 class Ship:public CelestialBody {
-    CelestialBody* parent;
+  CelestialBody* parent;
+  Velocity vel;
+  Heading heading;
+  double maxThrust;
+  double mass;
+  double throttle;
+  double fuelConsumed;
+  double fuelRate;
+
   public:
     Ship();
-    Ship(CelestialBody*, string, Velocity, Position, Prograde, Heading, double, double);
+    Ship(CelestialBody*, string, Velocity, Position, Heading, double, double);
     GravitationalParameter getParentMu();
     string getParentName();
+    void step(Time, double);
+    Coordinates getCoordinates(Time);
     void setThrottle(double);
-    double getAcceleration();
+    Acceleration getAcceleration();
     double getThrust();
     void consumeFuel(double, double);
     double getMass();
     void setFuelRate(double);
     double getFuelRate();
-
-  private:
-    Velocity vel;
-    Prograde pro;
-    Heading heading;
-    double maxThrust;
-    double mass;
-    double throttle;
-    double fuelConsumed;
-    double fuelRate;
+    void updateInitialMeanAnomaly(Time);
 };
 
 #endif

@@ -3,12 +3,11 @@
 Ship::Ship() {
 };
 
-Ship::Ship(CelestialBody* _parent, string _name, Velocity _vel, Position _pos, Prograde _pro, Heading _heading, double _thrust, double _mass) {
+Ship::Ship(CelestialBody* _parent, string _name, Velocity _vel, Position _pos, Heading _heading, double _thrust, double _mass) {
   parent       = _parent;
   name         = _name;
   vel          = _vel;
   pos          = _pos;
-  pro          = _pro;
   heading      = _heading;
   maxThrust    = _thrust;
   mass         = _mass;
@@ -25,6 +24,21 @@ string Ship::getParentName() {
   return parent->name;
 };
 
+void Ship::step(Time t, double dt) {
+  Acceleration gravity  = Acceleration(getParentMu() / -pow(pos.r, 2), pos.phi);
+  Acceleration accel    = (gravity + getAcceleration()) * dt;
+  Coordinates oldCoords = getLocalCoordinates(t);
+  Coordinates newCoords = oldCoords + vel + accel.toVelocity(dt);
+  pos = newCoords.toPosition();
+
+  vel = vel + accel;
+  updateInitialMeanAnomaly(t);
+};
+
+Coordinates Ship::getCoordinates(Time t) {
+  return getLocalCoordinates(t) + parent->getCoordinates(t);
+};
+
 void Ship::setThrottle(double _throttle) {
   if (_throttle > 1) _throttle = 1;
   if (_throttle < 0) _throttle = 0;
@@ -32,8 +46,8 @@ void Ship::setThrottle(double _throttle) {
   throttle = _throttle;
 };
 
-double Ship::getAcceleration() {
-  return getThrust() / getMass();
+Acceleration Ship::getAcceleration() {
+  return Acceleration(getThrust() / getMass(), heading);
 };
 
 double Ship::getThrust() {
@@ -55,3 +69,8 @@ void Ship::setFuelRate(double rate) {
 double Ship::getFuelRate() {
   return fuelRate;
 };
+
+void Ship::updateInitialMeanAnomaly(Time t) {
+  m = Angle(getMeanAnomaly(t) - getMeanMotion() * t);
+};
+

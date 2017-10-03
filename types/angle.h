@@ -7,11 +7,11 @@ class Angle {
   public:
     double dir;
     Angle();
-    Angle(double _dir);
+    Angle(double);
+    Angle(double, double);
     virtual double getRadians();
-    operator double() {
-      return getRadians();
-    };
+    operator double() { return getRadians(); };
+    Angle operator+(Angle);
     double sin();
     double cos();
 };

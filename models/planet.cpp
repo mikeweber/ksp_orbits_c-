@@ -1,9 +1,5 @@
-#include <iostream>
 #include <string>
 #include "planet.h"
-#include "celestial_body.h"
-#include "../types/position.h"
-#include "../utils/tau.h"
 
 using namespace std;
 
@@ -23,3 +19,8 @@ GravitationalParameter Planet::getParentMu() {
 string Planet::getParentName() {
   return parent->name;
 };
+
+Coordinates Planet::getCoordinates(Time t) {
+  return getLocalCoordinates(t) + parent->getCoordinates(t);
+};
+

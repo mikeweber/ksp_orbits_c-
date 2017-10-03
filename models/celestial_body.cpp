@@ -19,7 +19,16 @@ void CelestialBody::init(string body_name, double body_radius, GravitationalPara
 
 CelestialBody::~CelestialBody() {};
 
-Position* CelestialBody::getPositionAtTime(Time t) {
+Coordinates CelestialBody::getCoordinates(Time t) {
+  return Coordinates(0.0, 0.0);
+};
+
+Coordinates CelestialBody::getLocalCoordinates(Time t) {
+  std::pair<double, double> coords = getPositionAtTime(t).toCoordinates();
+  return Coordinates(coords.first, coords.second);
+};
+
+Position CelestialBody::getPositionAtTime(Time t) {
   double ecc = getEccentricity();
   Angle M    = getMeanAnomaly(t, ecc) * -1;
   double S   = M.sin();
@@ -28,7 +37,7 @@ Position* CelestialBody::getPositionAtTime(Time t) {
 
   Angle phi = Angle(getArgumentOfPeriapsis() - atan2((1 - esq) * S, C - ecc));
   double r  = (a * (1 - esq)) / (1 + ecc * phi.cos());
-  return new Position(r, phi);
+  return Position(r, phi);
 };
 
 Angle CelestialBody::getMeanAnomaly(Time t) {
@@ -42,8 +51,8 @@ Angle CelestialBody::getMeanAnomaly(Time t, double ecc) {
     Angle E = getEccentricAnomaly(TAU / 4, ecc);
     M = Angle(E - ecc * E.sin());
   } else {
-    double mm = getMeanMotion() * t;
-    M = Angle(getInitMeanAnomaly() + getMeanMotion() * t);
+    Angle mm = getMeanMotion() * t;
+    M = Angle(getInitMeanAnomaly() + mm);
   }
   return M;
 };
@@ -68,7 +77,7 @@ Angle CelestialBody::getInitMeanAnomaly() {
 };
 
 Angle CelestialBody::getMeanMotion() {
-  return sqrt(getParentMu() / pow(a, 3));
+  return Angle(sqrt(getParentMu() / pow(a, 3)));
 };
 
 GravitationalParameter CelestialBody::getParentMu() {
