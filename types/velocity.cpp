@@ -1,4 +1,3 @@
-#include <math.h>
 #include "velocity.h"
 
 Velocity::Velocity() {
@@ -17,10 +16,10 @@ Velocity::Velocity(double _vel, Angle _dir) {
 };
 
 double Velocity::x() {
-  return cos(dir) * vel;
+  return dir.cos() * vel;
 };
 
 double Velocity::y() {
-  return sin(dir) * vel;
+  return dir.sin() * vel;
 };
 

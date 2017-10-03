@@ -1,3 +1,4 @@
+#include <math.h>
 #include "angle.h"
 
 Angle::Angle() {
@@ -10,4 +11,12 @@ Angle::Angle(double _dir) {
 
 double Angle::getRadians() {
   return clampRadians(dir);
+};
+
+double Angle::sin() {
+  return ::sin(dir);
+};
+
+double Angle::cos() {
+  return ::cos(dir);
 };

@@ -17,27 +17,27 @@ class CelestialBody {
     long int mu;
     double v;
     double a;
-    double arg_of_pe;
+    Angle arg_of_pe;
     Position pos;
     double e;
-    double m;
+    Angle m;
 
     CelestialBody();
     ~CelestialBody();
     Position * getPositionAtTime(Time);
-    double getMeanAnomaly(Time);
-    double getMeanAnomaly(Time, double);
-    double getEccentricAnomaly(double, double);
-    double getEccentricAnomaly(double, double, double, int);
-    double getInitMeanAnomaly();
-    double getMeanMotion();
+    Angle getMeanAnomaly(Time);
+    Angle getMeanAnomaly(Time, double);
+    Angle getEccentricAnomaly(Angle, double);
+    Angle getEccentricAnomaly(Angle, double, Angle, int);
+    Angle getInitMeanAnomaly();
+    Angle getMeanMotion();
     virtual GravitationalParameter getParentMu();
     virtual string getParentName();
     double getEccentricity();
-    double getArgumentOfPeriapsis();
+    Angle getArgumentOfPeriapsis();
 
   protected:
-    void init(string, double, GravitationalParameter, double, Position*, double, double, double);
+    void init(string, double, GravitationalParameter, double, Position*, Angle, double, Angle);
 };
 
 #endif

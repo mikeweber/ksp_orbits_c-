@@ -12,6 +12,8 @@ class Angle {
     operator double() {
       return getRadians();
     };
+    double sin();
+    double cos();
 };
 
 #endif
