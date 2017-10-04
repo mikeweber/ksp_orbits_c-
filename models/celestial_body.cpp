@@ -7,14 +7,14 @@ using namespace std;
 
 CelestialBody::CelestialBody() {};
 
-void CelestialBody::init(string body_name, double body_radius, GravitationalParameter body_mu, double semimajor_axis, Position* pos, Angle body_arg_of_pe, double eccentricity, Angle prograde) {
+void CelestialBody::init(string body_name, double body_radius, GravitationalParameter body_mu, double semimajor_axis, Position pos, Angle body_arg_of_pe, double eccentricity, Angle prograde) {
   name      = body_name;
   radius    = body_radius;
   mu        = body_mu;
   a         = semimajor_axis;
   arg_of_pe = body_arg_of_pe;
   e         = eccentricity;
-  m         = pos->phi;
+  m         = pos.phi;
 };
 
 CelestialBody::~CelestialBody() {};

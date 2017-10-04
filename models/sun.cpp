@@ -6,7 +6,7 @@
 using namespace std;
 
 Sun::Sun(string body_name, double body_radius, GravitationalParameter body_mu) {
-  Position* pos = new Position(0.0, 0.0);
+  Position pos = Position(0.0, 0.0);
   init(body_name, body_radius, body_mu, 0.0, pos, 0.0, 0.0, 0.0);
 };
 

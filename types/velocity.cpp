@@ -34,3 +34,7 @@ double Velocity::getY() {
   return y;
 };
 
+Angle* Velocity::getAngle() {
+  return &dir;
+};
+

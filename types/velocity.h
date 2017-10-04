@@ -15,6 +15,7 @@ class Velocity {
     Velocity operator+(Acceleration);
     double getX();
     double getY();
+    Angle* getAngle();
 
   private:
     double vel;

@@ -9,9 +9,12 @@ class Heading:public Angle {
     Heading(double);
     Heading(double, Angle*);
     double getRadians();
+    void setRelativeAngle(Angle*);
+    void unsetRelativeAngle();
+    double getRelativeAngle();
 
   private:
-    Angle relative;
+    Angle* relative;
 };
 
 #endif

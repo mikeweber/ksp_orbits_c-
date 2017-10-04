@@ -27,7 +27,7 @@ class CelestialBody {
     ~CelestialBody();
     virtual Coordinates getCoordinates(Time);
     Coordinates getLocalCoordinates(Time);
-    Position getPositionAtTime(Time);
+    virtual Position getPositionAtTime(Time);
     Angle getMeanAnomaly(Time);
     Angle getMeanAnomaly(Time, double);
     Angle getEccentricAnomaly(Angle, double);
@@ -40,7 +40,7 @@ class CelestialBody {
     Angle getArgumentOfPeriapsis();
 
   protected:
-    void init(string, double, GravitationalParameter, double, Position*, Angle, double, Angle);
+    void init(string, double, GravitationalParameter, double, Position, Angle, double, Angle);
 };
 
 #endif

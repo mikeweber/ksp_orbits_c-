@@ -1,7 +1,6 @@
 #include "ship.h"
 
-Ship::Ship() {
-};
+Ship::Ship() {};
 
 Ship::Ship(CelestialBody* _parent, string _name, Velocity _vel, Position _pos, Heading _heading, double _thrust, double _mass) {
   parent       = _parent;
@@ -29,10 +28,18 @@ void Ship::step(Time t, double dt) {
   Acceleration accel    = (gravity + getAcceleration()) * dt;
   Coordinates oldCoords = getLocalCoordinates(t);
   Coordinates newCoords = oldCoords + vel + accel.toVelocity(dt);
-  pos = newCoords.toPosition();
 
+  pos = newCoords.toPosition();
   vel = vel + accel;
   updateInitialMeanAnomaly(t);
+};
+
+void Ship::setRelativeHeading(Angle angle) {
+  heading = Heading(angle, vel.getAngle());
+}
+
+void Ship::setHeading(Angle angle) {
+  heading = Heading(angle);
 };
 
 Coordinates Ship::getCoordinates(Time t) {
@@ -73,4 +80,20 @@ double Ship::getFuelRate() {
 void Ship::updateInitialMeanAnomaly(Time t) {
   m = Angle(getMeanAnomaly(t) - getMeanMotion() * t);
 };
+
+Velocity Ship::getVelocity() {
+  return vel;
+};
+
+Heading Ship::getHeading() {
+  return heading;
+};
+
+Angle* Ship::getPrograde() {
+  return vel.getAngle();
+};
+
+Position Ship::getPositionAtTime(Time t) {
+  return pos;
+}
 

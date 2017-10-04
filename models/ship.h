@@ -2,6 +2,7 @@
 #include "celestial_body.h"
 #include "../types/velocity.h"
 #include "../types/coordinates.h"
+#include "../types/position.h"
 #include "../types/heading.h"
 #include "../types/time.h"
 #include "../types/acceleration.h"
@@ -36,6 +37,12 @@ class Ship:public CelestialBody {
     void setFuelRate(double);
     double getFuelRate();
     void updateInitialMeanAnomaly(Time);
+    void setRelativeHeading(Angle);
+    void setHeading(Angle);
+    Velocity getVelocity();
+    Heading getHeading();
+    Angle* getPrograde();
+    Position getPositionAtTime(Time);
 };
 
 #endif
