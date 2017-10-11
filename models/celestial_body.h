@@ -36,10 +36,12 @@ class CelestialBody {
     Angle getMeanMotion();
     virtual GravitationalParameter getParentMu();
     virtual string getParentName();
+    virtual CelestialBody* getParent();
     double getEccentricity();
     Angle getArgumentOfPeriapsis();
 
   protected:
+    CelestialBody* parent;
     void init(string, double, GravitationalParameter, double, Position, Angle, double, Angle);
 };
 

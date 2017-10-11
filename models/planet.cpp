@@ -12,14 +12,6 @@ Planet::Planet(CelestialBody* _parent, string body_name, double body_radius, Gra
   init(body_name, body_radius, body_mu, semimajor_axis, pos, body_arg_of_pe, eccentricity, prograde);
 };
 
-GravitationalParameter Planet::getParentMu() {
-  return parent->mu;
-};
-
-string Planet::getParentName() {
-  return parent->name;
-};
-
 Coordinates Planet::getCoordinates(Time t) {
   return getLocalCoordinates(t) + parent->getCoordinates(t);
 };

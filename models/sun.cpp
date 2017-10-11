@@ -13,3 +13,11 @@ Sun::Sun(string body_name, double body_radius, GravitationalParameter body_mu) {
 Coordinates Sun::getCoordinates(Time t) {
   return Coordinates(0.0, 0.0);
 };
+
+CelestialBody* Sun::getParent() {
+  return this;
+};
+
+string Sun::getParentName() {
+  return "<none>";
+};

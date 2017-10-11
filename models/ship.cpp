@@ -97,3 +97,6 @@ Position Ship::getPositionAtTime(Time t) {
   return pos;
 }
 
+void Ship::detectSOIChange(Time t) {
+};
+

@@ -21,6 +21,7 @@ class Ship:public CelestialBody {
   double throttle;
   double fuelConsumed;
   double fuelRate;
+  void detectSOIChange(Time);
 
   public:
     Ship();

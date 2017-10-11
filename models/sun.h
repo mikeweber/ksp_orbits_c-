@@ -11,6 +11,8 @@ class Sun:public CelestialBody {
   public:
     Sun(string, double, GravitationalParameter);
     Coordinates getCoordinates(Time);
+    CelestialBody* getParent();
+    string getParentName();
 };
 
 #endif

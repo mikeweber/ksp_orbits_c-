@@ -80,19 +80,23 @@ Angle CelestialBody::getMeanMotion() {
   return Angle(sqrt(getParentMu() / pow(a, 3)));
 };
 
-GravitationalParameter CelestialBody::getParentMu() {
-  return mu;
-};
-
-string CelestialBody::getParentName() {
-  return name;
-};
-
 double CelestialBody::getEccentricity() {
   return e;
 };
 
 Angle CelestialBody::getArgumentOfPeriapsis() {
   return arg_of_pe;
+};
+
+GravitationalParameter CelestialBody::getParentMu() {
+  return getParent()->mu;
+};
+
+string CelestialBody::getParentName() {
+  return getParent()->name;
+};
+
+CelestialBody* CelestialBody::getParent() {
+  return parent;
 };
 
